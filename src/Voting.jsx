@@ -262,11 +262,11 @@ function Voting() {
 
   // 🔘 Regular Voting View
   return (
-    <div className='all bg-[#0B1223] w-screen h-screen text-white'>
+    <div className='all bg-[#0B1223] w-full min-h-screen text-white overflow-x-hidden'>
       <header className='App-header md:p-8 p-4'>
         <img src={logo} className='App-logo' alt='logo' />
       </header>
-      <div className='container mx-auto px-4 py-10'>
+      <div className='container mx-auto px-4 py-10 overflow-y-auto'>
         <div className='head text-center mb-15'>
           <h1 className='lg:text-5xl text-3xl font-bold text-white'>
             EYE OF VERITAS
@@ -274,7 +274,7 @@ function Voting() {
         </div>
 
         {showMessage && (
-          <div className='bg-[#043763] md:p-4 p-2 rounded-lg mt-4 inline-block absolute -top-1 left-5 z-10'>
+          <div className='bg-[#043763] md:p-4 p-2 rounded-lg mt-4 fixed top-4 left-4 z-10'>
             <p>
               ✅ Thank you for voting video
               <span className='font-semibold px-1'>
@@ -286,7 +286,7 @@ function Voting() {
         )}
 
         {showThankYou && (
-          <div className='fixed inset-0 bg-[#000000f0] bg-opacity-60 flex justify-center items-center z-50'>
+          <div className='fixed inset-0 bg-[#000000f0] flex justify-center items-center z-50 p-4 overflow-y-auto'>
             <span>
               <i
                 className='fa-solid fa-xmark absolute top-2 right-5 text-white cursor-pointer'
@@ -334,7 +334,7 @@ function Voting() {
         {/* Videos */}
         <div className='video flex  md:gap-14 gap-3 justify-center items-center md:mt-27 mt-20  flex-wrap'>
           <video
-            className='lg:w-96 md:w-80  w-64  h-64 rounded-lg object-cover md:p-0 pb-2'
+            className='lg:w-96 md:w-80 w-64 rounded-lg object-cover'
             controls>
             <source src={truth} type='video/mp4' />
           </video>

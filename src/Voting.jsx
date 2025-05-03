@@ -262,7 +262,7 @@ function Voting() {
 
   // 🔘 Regular Voting View
   return (
-    <div className='all bg-[#0B1223] w-screen min-h-screen text-white'>
+    <div className='all bg-[#0B1223] w-screen min-h-screen overflow-auto text-white'>
       <header className='App-header md:p-8 p-4'>
         <img src={logo} className='App-logo' alt='logo' />
       </header>
@@ -274,7 +274,7 @@ function Voting() {
         </div>
 
         {showMessage && (
-          <div className='bg-[#043763] md:p-4 p-2 rounded-lg mt-4 inline-block absolute -top-1 left-5 z-10'>
+          <div className='bg-[#043763] md:p-4 p-2 rounded-lg mt-4 inline-block relative md:absolute md:-top-1 md:left-5 z-10'>
             <p>
               ✅ Thank you for voting video
               <span className='font-semibold px-1'>

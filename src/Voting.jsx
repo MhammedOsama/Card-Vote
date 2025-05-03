@@ -262,11 +262,11 @@ function Voting() {
 
   // 🔘 Regular Voting View
   return (
-    <div className='all bg-[#0B1223] w-screen min-h-screen overflow-auto text-white'>
+    <div className='all bg-[#0B1223] w-screen h-screen text-white'>
       <header className='App-header md:p-8 p-4'>
         <img src={logo} className='App-logo' alt='logo' />
       </header>
-      <div className='container mx-auto px-4 pt-10 lg:pt-20 pb-16'>
+      <div className='container mx-auto px-4 py-10'>
         <div className='head text-center mb-15'>
           <h1 className='lg:text-5xl text-3xl font-bold text-white'>
             EYE OF VERITAS
@@ -274,7 +274,7 @@ function Voting() {
         </div>
 
         {showMessage && (
-          <div className='bg-[#043763] md:p-4 p-2 rounded-lg mt-4 inline-block relative md:absolute md:-top-1 md:left-5 z-10'>
+          <div className='bg-[#043763] md:p-4 p-2 rounded-lg mt-4 inline-block absolute -top-1 left-5 z-10'>
             <p>
               ✅ Thank you for voting video
               <span className='font-semibold px-1'>
@@ -289,7 +289,7 @@ function Voting() {
           <div className='fixed inset-0 bg-[#000000f0] bg-opacity-60 flex justify-center items-center z-50'>
             <span>
               <i
-                className='fa-solid fa-xmark absolute top-5 right-6 text-white text-2xl cursor-pointer'
+                className='fa-solid fa-xmark absolute top-2 right-5 text-white cursor-pointer'
                 onClick={() => setShowThankYou(false)}></i>
             </span>
             <div className='card animated'>

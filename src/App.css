@@ -1,0 +1,402 @@
+html,
+body,
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+.App-header {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+}
+
+.App-header::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 300px;
+  background: linear-gradient(#8aa3e09d, #37296d00);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.App-logo {
+  width: 100px;
+  height: auto;
+  pointer-events: none;
+}
+
+h1 {
+  font-family: "Italiana", serif;
+  color: logo1fff;
+
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+
+}
+
+.submitGlassB {
+  background: linear-gradient(135deg, #0c9ddcdb, rgba(215, 240, 251, 0.593));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.startGlassB {
+  background: linear-gradient(135deg, rgba(33, 20, 109, 0.419), #ffffffa8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.startGlassB:hover {
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.1));
+}
+
+.submitGlassB:hover {
+  background: linear-gradient(135deg,
+      rgba(12, 157, 220, 0.958),
+      rgba(2, 41, 58, 0.41));
+}
+
+
+.card {
+  width: 300px;
+  height: 200px;
+  background: #094982;
+  position: relative;
+  display: grid;
+  place-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+
+}
+
+#logo-main,
+#logo-second {
+  height: 100%;
+}
+
+#logo-main {
+  fill: rgb(192, 188, 188);
+}
+
+#logo-second {
+  padding-bottom: 10px;
+  fill: none;
+  stroke: rgb(192, 188, 188);
+  stroke-width: 1px;
+}
+
+
+
+.border {
+  position: absolute;
+  inset: 0px;
+  border: 2px solid rgb(192, 188, 188);
+  opacity: 0;
+  transform: rotate(10deg);
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+
+.bottom-text {
+  position: absolute;
+  left: 50%;
+  bottom: 13px;
+  transform: translateX(-50%);
+  font-size: 6px;
+  text-transform: uppercase;
+  padding: 0px 5px 0px 8px;
+  color: rgb(192, 188, 188);
+  background: #043763;
+  opacity: 0;
+  letter-spacing: 7px;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+
+.content {
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+
+.content .logo {
+  height: 35px;
+  position: relative;
+  width: 60px;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+
+}
+
+.content .logo .logo1 {
+
+  height: 33px;
+  width: 200px;
+  position: absolute;
+  left: 0;
+}
+
+.content .logo .logo2 {
+  height: 33px;
+
+  position: absolute;
+  left: 50px;
+}
+
+.content .logo .trail {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.content .logo-bottom-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 30px;
+  color: rgb(192, 188, 188);
+  padding-left: 8px;
+  font-size: 11px;
+  opacity: 0;
+  letter-spacing: none;
+  transition: all 0.5s ease-in-out 0.5s;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-transition: all 0.5s ease-in-out 0.5s;
+  -moz-transition: all 0.5s ease-in-out 0.5s;
+  -ms-transition: all 0.5s ease-in-out 0.5s;
+  -o-transition: all 0.5s ease-in-out 0.5s;
+}
+
+.card.animated {
+  border-radius: 0;
+  transform: scale(1.1);
+  transition: all 0.5s ease-in-out;
+  animation: cardAppear 0.01s forwards;
+  animation-delay: 1s;
+  -webkit-animation: cardAppear 0.01s forwards;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+@keyframes cardAppear {
+  to {
+    border-radius: 0;
+    transform: scale(1.1);
+
+  }
+}
+
+.card.animated .logo {
+  animation: opacity 1s ease-in-out forwards;
+  animation-delay: 1s;
+  width: 134px;
+  -webkit-animation: opacity 1s ease-in-out forwards;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.card.animated .border {
+  animation: borderShow 0.5s ease-in-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes borderShow {
+  to {
+    inset: 15px;
+    opacity: 1;
+    transform: rotate(0);
+  }
+}
+
+.card.animated .bottom-text {
+  animation: bottomTextFadeIn 0.5s ease-in-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes bottomTextFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+.card.animated .content .logo-bottom-text {
+  animation: logoBottomTextFadeIn 0.5s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes logoBottomTextFadeIn {
+  to {
+    opacity: 1;
+    letter-spacing: 3px;
+  }
+}
+
+.card.animated .trail {
+  animation: trail 1s ease-in-out 1s;
+}
+
+
+@keyframes bottomTextAnim {
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+.card.animated .content .logo-bottom-text {
+  animation: logoBottomTextAnim 0.5s ease-in-out 1.5s forwards;
+}
+
+@keyframes logoBottomTextAnim {
+  to {
+    opacity: 1;
+    letter-spacing: 3px;
+  }
+}
+
+.card.animated .trail {
+  animation: trail 1s ease-in-out 1s;
+}

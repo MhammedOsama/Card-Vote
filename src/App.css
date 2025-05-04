@@ -1,12 +1,10 @@
 html,
 body,
 #root {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-
 }
 
 /* Box sizing rules */
@@ -39,7 +37,6 @@ html:focus-within {
 }
 
 body {
-  min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
@@ -79,7 +76,6 @@ select {
   }
 }
 
-
 .App-header {
   background-color: transparent;
   display: flex;
@@ -109,7 +105,7 @@ select {
 }
 
 .App-logo {
-  width: 100px;
+  width: 90px;
   height: auto;
   pointer-events: none;
 }
@@ -117,12 +113,10 @@ select {
 h1 {
   font-family: "Italiana", serif;
   color: logo1fff;
-
 }
 
 h2 {
   font-family: "Roboto", sans-serif;
-
 }
 
 .submitGlassB {
@@ -150,17 +144,20 @@ h2 {
 }
 
 .startGlassB:hover {
-  background: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
 }
 
 .submitGlassB:hover {
-  background: linear-gradient(135deg,
-      rgba(12, 157, 220, 0.958),
-      rgba(2, 41, 58, 0.41));
+  background: linear-gradient(
+    135deg,
+    rgba(12, 157, 220, 0.958),
+    rgba(2, 41, 58, 0.41)
+  );
 }
-
 
 .card {
   width: 300px;
@@ -172,7 +169,6 @@ h2 {
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
-
 }
 
 #logo-main,
@@ -190,8 +186,6 @@ h2 {
   stroke: rgb(192, 188, 188);
   stroke-width: 1px;
 }
-
-
 
 .border {
   position: absolute;
@@ -247,11 +241,9 @@ h2 {
   width: 60px;
   overflow: hidden;
   transition: all 1s ease-in-out;
-
 }
 
 .content .logo .logo1 {
-
   height: 33px;
   width: 200px;
   position: absolute;
@@ -300,6 +292,7 @@ h2 {
   transform: scale(1.1);
   transition: all 0.5s ease-in-out;
   animation: cardAppear 0.01s forwards;
+  -webkit-animation-delay: 1s;
   animation-delay: 1s;
   -webkit-animation: cardAppear 0.01s forwards;
   -webkit-transition: all 0.5s ease-in-out;
@@ -312,19 +305,36 @@ h2 {
   -o-border-radius: 0;
 }
 
+@-webkit-keyframes cardAppear {
+  to {
+    border-radius: 0;
+    transform: scale(1.1);
+  }
+}
+
 @keyframes cardAppear {
   to {
     border-radius: 0;
     transform: scale(1.1);
-
   }
 }
 
 .card.animated .logo {
   animation: opacity 1s ease-in-out forwards;
+  -webkit-animation-delay: 1s;
   animation-delay: 1s;
   width: 134px;
   -webkit-animation: opacity 1s ease-in-out forwards;
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes opacity {
@@ -338,8 +348,18 @@ h2 {
 }
 
 .card.animated .border {
+  -webkit-animation: borderShow 0.5s ease-in-out forwards;
   animation: borderShow 0.5s ease-in-out forwards;
+  -webkit-animation-delay: 1s;
   animation-delay: 1s;
+}
+
+@-webkit-keyframes borderShow {
+  to {
+    inset: 15px;
+    opacity: 1;
+    transform: rotate(0);
+  }
 }
 
 @keyframes borderShow {
@@ -351,8 +371,17 @@ h2 {
 }
 
 .card.animated .bottom-text {
+  -webkit-animation: bottomTextFadeIn 0.5s ease-in-out forwards;
   animation: bottomTextFadeIn 0.5s ease-in-out forwards;
+  -webkit-animation-delay: 1s;
   animation-delay: 1s;
+}
+
+@-webkit-keyframes bottomTextFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes bottomTextFadeIn {
@@ -363,8 +392,17 @@ h2 {
 }
 
 .card.animated .content .logo-bottom-text {
+  -webkit-animation: logoBottomTextFadeIn 0.5s ease-in-out forwards;
   animation: logoBottomTextFadeIn 0.5s ease-in-out forwards;
+  -webkit-animation-delay: 1.5s;
   animation-delay: 1.5s;
+}
+
+@-webkit-keyframes logoBottomTextFadeIn {
+  to {
+    opacity: 1;
+    letter-spacing: 3px;
+  }
 }
 
 @keyframes logoBottomTextFadeIn {
@@ -375,9 +413,16 @@ h2 {
 }
 
 .card.animated .trail {
+  -webkit-animation: trail 1s ease-in-out 1s;
   animation: trail 1s ease-in-out 1s;
 }
 
+@-webkit-keyframes bottomTextAnim {
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
 
 @keyframes bottomTextAnim {
   to {
@@ -387,7 +432,15 @@ h2 {
 }
 
 .card.animated .content .logo-bottom-text {
+  -webkit-animation: logoBottomTextAnim 0.5s ease-in-out 1.5s forwards;
   animation: logoBottomTextAnim 0.5s ease-in-out 1.5s forwards;
+}
+
+@-webkit-keyframes logoBottomTextAnim {
+  to {
+    opacity: 1;
+    letter-spacing: 3px;
+  }
 }
 
 @keyframes logoBottomTextAnim {
@@ -398,5 +451,6 @@ h2 {
 }
 
 .card.animated .trail {
+  -webkit-animation: trail 1s ease-in-out 1s;
   animation: trail 1s ease-in-out 1s;
 }

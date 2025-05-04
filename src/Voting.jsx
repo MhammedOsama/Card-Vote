@@ -267,8 +267,8 @@ function Voting() {
         <img src={logo} className='App-logo' alt='logo' />
       </header>
       <div className='container mx-auto px-4 py-10 overflow-y-auto'>
-        <div className='head text-center mb-15'>
-          <h1 className='lg:text-5xl text-3xl font-bold text-white'>
+        <div className='head text-center '>
+          <h1 className='lg:text-5xl text-3xl font-bold text-white  '>
             EYE OF VERITAS
           </h1>
         </div>
@@ -286,7 +286,7 @@ function Voting() {
         )}
 
         {showThankYou && (
-          <div className='fixed inset-0 bg-[#000000f0] flex justify-center items-center z-50 p-4 overflow-y-auto'>
+          <div className='fixed inset-0 bg-[#000000f0] flex justify-center items-center z-50 p-4 overflow-y-auto '>
             <span>
               <i
                 className='fa-solid fa-xmark absolute top-2 right-5 text-white cursor-pointer'
@@ -332,7 +332,7 @@ function Voting() {
         )}
 
         {/* Videos */}
-        <div className='video flex  md:gap-14 gap-3 justify-center items-center md:mt-27 mt-20  flex-wrap'>
+        <div className='video flex  md:gap-14 gap-3 justify-center items-center md:mt-27 mt-15  flex-wrap'>
           <video
             className='lg:w-96 md:w-80 w-64 rounded-lg object-cover'
             controls>
@@ -346,28 +346,28 @@ function Voting() {
         </div>
 
         {/* Buttons */}
-        <div className='btn flex justify-center items-center pt-10 flex-wrap lg:gap-45 md:gap-30 gap-7 '>
+        <div className='btn flex justify-center items-center   lg:gap-45 md:gap-30  gap-5 '>
           <button
             onClick={() => handleChoice("video1")}
             disabled={selectedLiar !== null || isLoading}
-            className={`text-white font-medium rounded-lg text-sm md:px-12 px-6 md:py-2 py-1 mb-2 lg:ms-5 shadow-amber-50 shadow-sm
+            className={`text-white font-medium rounded-lg text-[12px] md:px-12 px-3 md:py-2 py-1  lg:ms-5 shadow-amber-50 shadow-sm
               ${
                 selectedLiar === null
                   ? "startGlassB"
                   : "bg-gray-500 cursor-not-allowed"
               }`}>
-            Choose Video 1 as Liar
+            Video 1 as Liar
           </button>
           <button
             onClick={() => handleChoice("video2")}
             disabled={selectedLiar !== null || isLoading}
-            className={`text-white font-medium rounded-lg text-sm md:px-12 px-6 md:py-2 py-1 mb-3 lg:me-5 shadow-amber-50 shadow-sm
+            className={`text-white font-medium rounded-lg text-[12px] md:px-12 px-3 md:py-2 py-1  lg:me-5 shadow-amber-50 shadow-sm
               ${
                 selectedLiar === null
                   ? "submitGlassB"
                   : "bg-gray-500 cursor-not-allowed"
               }`}>
-            Choose Video 2 as Liar
+            Video 2 as Liar
           </button>
         </div>
       </div>

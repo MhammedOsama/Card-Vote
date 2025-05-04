@@ -325,7 +325,7 @@ function Voting() {
                   <span className='trail' />
                 </div>
                 <span className='logo-bottom-text'>
-                  see result on <span>6/15</span>
+                  see result on <div className='centered-date'>6/15</div>
                 </span>
               </div>
               <span className='bottom-text'>Liars</span>

@@ -262,11 +262,11 @@ function Voting() {
 
   // 🔘 Regular Voting View
   return (
-    <div className='all bg-[#0B1223] w-full min-h-screen text-white overflow-x-hidden'>
+    <div className='all bg-[#0B1223] w-full h-screen text-white overflow-hidden'>
       <header className='App-header md:p-8 p-4'>
         <img src={logo} className='App-logo' alt='logo' />
       </header>
-      <div className='container mx-auto px-4 py-10 overflow-y-auto'>
+      <div className='container mx-auto px-4 py-10 '>
         <div className='head text-center '>
           <h1 className='lg:text-5xl text-3xl font-bold text-white  '>
             EYE OF VERITAS
@@ -324,9 +324,11 @@ function Voting() {
 
                   <span className='trail' />
                 </div>
-                <span className='logo-bottom-text'>see result on 6/15</span>
+                <span className='logo-bottom-text'>
+                  see result on <span>6/15</span>
+                </span>
               </div>
-              <span className='bottom-text'>Lairs</span>
+              <span className='bottom-text'>Liars</span>
             </div>
           </div>
         )}

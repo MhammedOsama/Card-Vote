@@ -6,7 +6,6 @@ import logo from "./assets/finlogo.png";
 
 function Voting() {
   const [selectedLiar, setSelectedLiar] = useState(null);
-
   const [showMessage, setShowMessage] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [appear, setAppear] = useState(false);
@@ -19,13 +18,18 @@ function Voting() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // 🔐 Replace with your secure auth method in real projects
-
   const correctAnswer = { liar: "video1", truth: "video2" };
   const authToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
   useEffect(() => {
+    const storedVote = localStorage.getItem("hasVoted");
+    if (storedVote) {
+      setSelectedLiar(storedVote);
+      setAppear(true);
+      setShowThankYou(true);
+    }
+
     const verifyAdminAccess = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const adminKey = urlParams.get("admin");
@@ -151,22 +155,12 @@ function Voting() {
       setIsLoading(false);
     }
   };
-  useEffect(() => {
-    if (selectedLiar) {
-      setShowMessage(true);
-      const timer = setTimeout(() => {
-        setShowMessage(false);
-      }, 1000); // 1 second
-
-      return () => clearTimeout(timer);
-    }
-  }, [selectedLiar]);
 
   const handleChoice = (liarChoice) => {
     setSelectedLiar(liarChoice);
+    localStorage.setItem("hasVoted", liarChoice);
     sendChoice(liarChoice);
     setAppear(true);
-
     setTimeout(() => setShowThankYou(true), 1000);
   };
 
@@ -336,7 +330,7 @@ function Voting() {
         {/* Videos */}
         <div className='video flex  md:gap-14 gap-3 justify-center items-center md:mt-27 mt-15  flex-wrap'>
           <video
-            className='lg:w-96 md:w-80 w-64 rounded-lg object-cover'
+            className='lg:w-96 md:w-80 w-64  rounded-lg object-cover'
             controls>
             <source src={truth} type='video/mp4' />
           </video>

@@ -1,4 +1,12 @@
 import React, { useState, useEffect } from "react";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import truth from "../src/assets/Truth.mp4";
 import liar from "../src/assets/Liar.mp4";
 import "./App.css";
@@ -164,92 +172,75 @@ function Voting() {
     setTimeout(() => setShowThankYou(true), 1000);
   };
 
-  // 🔐 Admin Dashboard
+  const chartData = [
+    { name: "Correct", value: results.correct },
+    { name: "Wrong", value: results.wrong },
+  ];
+
+  const COLORS = ["#4CAF50", "#F44336"]; // green and red
+
   if (isAdmin) {
     return (
-      <div style={{ padding: "20px", fontFamily: "Arial" }}>
-        <h1>Admin Dashboard</h1>
-        {isLoading && <p>Loading data...</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>}
+      <div
+        style={{
+          padding: "30px",
+          fontFamily: "Segoe UI, sans-serif",
+          maxWidth: "800px",
+          margin: "auto",
+        }}>
+        <h2 style={{ fontWeight: "600", marginBottom: "20px" }}>
+          Admin Dashboard
+        </h2>
 
         <div
           style={{
-            background: "#f5f5f5",
-            padding: "15px",
-            borderRadius: "5px",
-            marginBottom: "20px",
+            backgroundColor: "#f9f9f9",
+            padding: "20px",
+            borderRadius: "8px",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+            marginBottom: "25px",
           }}>
-          <h3>Total Votes: {results.correct + results.wrong}</h3>
-          <p>✅ Correct: {results.correct}</p>
-          <p>❌ Wrong: {results.wrong}</p>
           <p>
-            Success Rate:{" "}
+            <strong>Total Votes:</strong> {results.correct + results.wrong}
+          </p>
+          <p style={{ color: "green" }}>
+            ✅ <strong>Correct:</strong> {results.correct}
+          </p>
+          <p style={{ color: "crimson" }}>
+            ❌ <strong>Wrong:</strong> {results.wrong}
+          </p>
+          <p>
+            <strong>Success Rate:</strong>{" "}
             {Math.round(
               (results.correct / (results.correct + results.wrong || 1)) * 100
             )}
             %
           </p>
         </div>
-
-        <h3>All Responses</h3>
-        {results.allResponses.length > 0 ? (
-          <div style={{ maxHeight: "400px", overflowY: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr style={{ backgroundColor: "#eee" }}>
-                  <th style={{ padding: "8px", border: "1px solid #ddd" }}>
-                    Time
-                  </th>
-                  <th style={{ padding: "8px", border: "1px solid #ddd" }}>
-                    Choice
-                  </th>
-                  <th style={{ padding: "8px", border: "1px solid #ddd" }}>
-                    Correct?
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {results.allResponses.map((response, index) => (
-                  <tr key={index} style={{ borderBottom: "1px solid #ddd" }}>
-                    <td style={{ padding: "8px", border: "1px solid #ddd" }}>
-                      {new Date(response.timestamp).toLocaleString()}
-                    </td>
-                    <td style={{ padding: "8px", border: "1px solid #ddd" }}>
-                      {response.choice === "liar_video1"
-                        ? "Video 1"
-                        : "Video 2"}
-                    </td>
-                    <td
-                      style={{
-                        padding: "8px",
-                        border: "1px solid #ddd",
-                        color: response.is_correct ? "green" : "red",
-                      }}>
-                      {response.is_correct ? "✅" : "❌"}
-                    </td>
-                  </tr>
+        <h3 style={{ marginTop: "40px" }}>Result Breakdown</h3>
+        <div style={{ width: "100%", height: 250 }}>
+          <ResponsiveContainer>
+            <PieChart>
+              <Pie
+                data={chartData}
+                dataKey='value'
+                nameKey='name'
+                cx='50%'
+                cy='50%'
+                outerRadius={80}
+                label>
+                {chartData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
                 ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <p>No votes recorded yet</p>
-        )}
-
-        <button
-          onClick={fetchVotes}
-          disabled={isLoading}
-          style={{
-            marginTop: "20px",
-            padding: "10px 15px",
-            backgroundColor: "#4CAF50",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-          }}>
-          {isLoading ? "Refreshing..." : "Refresh Data"}
-        </button>
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     );
   }

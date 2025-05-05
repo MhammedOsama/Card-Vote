@@ -126,7 +126,7 @@ function Voting() {
     try {
       const isCorrect = liarChoice === correctAnswer.liar;
       const choiceValue =
-        liarChoice === "video1" ? "liar_video1" : "liar_video2";
+        liarChoice === "video2" ? "liar_video1" : "liar_video2";
 
       const response = await fetch(
         "https://apipermisson.runasp.net/api/Auth/Vote",
